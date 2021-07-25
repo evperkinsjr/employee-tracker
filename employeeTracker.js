@@ -47,3 +47,10 @@ const connection = mysql.createConnection({
 
 
 // Delete Employees
+
+
+// Connect to mysql server and sql database
+connection.connect((err) => {
+    if (err) throw err;
+    start();
+})
