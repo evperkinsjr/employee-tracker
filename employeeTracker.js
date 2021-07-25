@@ -14,8 +14,31 @@ const connection = mysql.createConnection({
 });
 
 // Prompt user for the action they should take
+const start = () => {
+    console.log('Welcome to the Employee Tracker');
+    inquirer
+        .prompt({
+            type: 'list',
+            name: 'mainMenu',
+            message: 'What would you like to do?',
+            choices: ['VIEW', 'ADD', 'UPDATE', 'DELETE', 'EXIT'],
+        })
+        .then((answer) => {
+            if (answer.mainMenu === 'VIEW') {
+                viewPrompt();
+            } else if (answer.mainMenu === 'ADD') {
+                addPrompt();
+            } else if (answer.mainMenu === 'UPDATE') {
+                updatePrompt();
+            } else if (answer.mainMenu === 'DELETE') {
+                deletePrompt();
+            } else {
+                connection.end();
+            }
+        });
+};
 
-
+// VIEW
 // View Departments
 
 
@@ -25,6 +48,7 @@ const connection = mysql.createConnection({
 // View Employees
 
 
+// ADD
 // Add Departments
 
 
@@ -34,12 +58,14 @@ const connection = mysql.createConnection({
 // Add Employees
 
 
+// UPDATE
 // Update Employee Roles
 
 
 // Update Employee Managers
 
 
+// DELETE
 // Delete Departments
 
 
