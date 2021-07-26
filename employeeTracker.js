@@ -1,7 +1,7 @@
 // Required Dependencies
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-const consoleTable = require('console.table');
+const cTable = require('console.table');
 require('dotenv').config();
 
 // Create connection for SQL database
@@ -70,13 +70,34 @@ const viewPrompt = () => {
         });
 };
 // View Departments
-
+const viewDepartments = () => {
+    connection.query('SELECT * FROM departments', (err, res) => {
+        if (err) throw err;
+        console.log('\n----------\nDepartments\n----------');
+        console.table(res);
+        start();
+    });
+};
 
 // View Roles
-
+const viewRoles = () => {
+    connection.query('SELECT * FROM roles', (err, res) => {
+        if (err) throw err;
+        console.log('\n----------\nRoles\n----------');
+        console.table(res);
+        start();
+    });
+};
 
 // View Employees
-
+const viewEmployees = () => {
+    connection.query('SELECT * FROM employees', (err, res) => {
+        if (err) throw err;
+        console.log('\n----------\nEmployees\n----------');
+        console.table(res);
+        start();
+    });
+};
 
 // ADD PROMPTS
 const addPrompt = () => {
