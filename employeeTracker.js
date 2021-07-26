@@ -24,16 +24,21 @@ const start = () => {
             choices: ['VIEW', 'ADD', 'UPDATE', 'DELETE', 'EXIT'],
         })
         .then((answer) => {
-            if (answer.mainMenu === 'VIEW') {
-                viewPrompt();
-            } else if (answer.mainMenu === 'ADD') {
-                addPrompt();
-            } else if (answer.mainMenu === 'UPDATE') {
-                updatePrompt();
-            } else if (answer.mainMenu === 'DELETE') {
-                deletePrompt();
-            } else {
-                connection.end();
+            switch (answer.mainMenu) {
+                case 'VIEW':
+                    viewPrompt();
+                    break;
+                case 'ADD':
+                    addPrompt();
+                    break;
+                case 'UPDATE':
+                    updatePrompt();
+                    break;
+                case 'DELETE':
+                    deletePrompt();
+                    break;
+                default:
+                    connection.end();
             }
         });
 };
