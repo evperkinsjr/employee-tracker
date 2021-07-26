@@ -115,6 +115,29 @@ const addPrompt = () => {
 
 
 // UPDATE
+const updatePrompt = () => {
+    inquirer
+        .prompt({
+            type: 'list',
+            name: 'updateMenu',
+            message: 'What would you like to update?',
+            choices: ['Roles', 'Managers'],
+        })
+        .then((answer) => {
+            switch (answer.updateMenu) {
+                case 'Roles':
+                    updateRoles();
+                    break;
+                case 'Employees':
+                    updateEmployees();
+                    break;
+                default:
+                    start();
+                    break;
+            }
+        });
+};
+
 // Update Employee Roles
 
 
@@ -135,4 +158,4 @@ const addPrompt = () => {
 connection.connect((err) => {
     if (err) throw err;
     start();
-})
+});
