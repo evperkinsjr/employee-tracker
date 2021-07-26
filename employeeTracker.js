@@ -78,7 +78,33 @@ const viewPrompt = () => {
 // View Employees
 
 
-// ADD
+// ADD PROMPTS
+const addPrompt = () => {
+    inquirer
+        .prompt({
+            type: 'list',
+            name: 'addMenu',
+            message: 'What would you like to add?',
+            choices: ['Departments', 'Roles', 'Employees'],
+        })
+        .then((answer) => {
+            switch (answer.addMenu) {
+                case 'Departments':
+                    addDepartments();
+                    break;
+                case 'Roles':
+                    addRoles();
+                    break;
+                case 'Employees':
+                    addEmployees();
+                    break;
+                default:
+                    start();
+                    break;
+            }
+        });
+};
+
 // Add Departments
 
 
