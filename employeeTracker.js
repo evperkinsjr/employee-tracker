@@ -38,7 +38,32 @@ const start = () => {
         });
 };
 
-// VIEW
+// VIEW PROMPTS
+const viewPrompt = () => {
+    inquirer
+        .prompt({
+            type: 'list',
+            name: 'viewMenu',
+            message: 'What would you like to view?',
+            choices: ['Departments', 'Roles', 'Employees'],
+        })
+        .then((answer) => {
+            switch (answer.viewMenu) {
+                case 'Departments':
+                    viewDepartments();
+                    break;
+                case 'Roles':
+                    viewRoles();
+                    break;
+                case 'Employees':
+                    viewEmployees();
+                    break;
+                default:
+                    start();
+                    break;
+            }
+        });
+};
 // View Departments
 
 
