@@ -149,8 +149,8 @@ const updatePrompt = () => {
                 case 'Roles':
                     updateRoles();
                     break;
-                case 'Employees':
-                    updateEmployees();
+                case 'Managers':
+                    updateManagers();
                     break;
                 default:
                     start();
