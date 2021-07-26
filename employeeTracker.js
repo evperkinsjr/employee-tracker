@@ -114,7 +114,7 @@ const addPrompt = () => {
 // Add Employees
 
 
-// UPDATE
+// UPDATE PROMPTS
 const updatePrompt = () => {
     inquirer
         .prompt({
@@ -144,7 +144,33 @@ const updatePrompt = () => {
 // Update Employee Managers
 
 
-// DELETE
+// DELETE PROMPTS
+const deletePrompt = () => {
+    inquirer
+        .prompt({
+            type: 'list',
+            name: 'deleteMenu',
+            message: 'What would you like to delete?',
+            choices: ['Departments', 'Roles', 'Employees'],
+        })
+        .then((answer) => {
+            switch (answer.deleteMenu) {
+                case 'Departments':
+                    deleteDepartments();
+                    break;
+                case 'Roles':
+                    deleteRoles();
+                    break;
+                case 'Employees':
+                    deleteEmployees();
+                    break;
+                default:
+                    start();
+                    break;
+            }
+        });
+};
+
 // Delete Departments
 
 
